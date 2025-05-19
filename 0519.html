@@ -1,0 +1,59 @@
+<html>
+<head>
+    <title>0519</title>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            background-image: url("grass.jpg");
+            background-size: 200px 140px;
+            position: relative;
+        }
+        #role{
+            width: 48px;
+            height: 72px;
+            background: url("sprite1.png");
+            background-position-y: 0px;
+            animation: walking 0.7s steps(3) infinite;
+            position:absolute;
+        }
+        @keyframes walking{
+            0%{background-position-x: -288px;}
+            100%{background-position-x: -432px;}
+        }
+    </style>
+    <script>
+        function game(){
+            role=document.getElementById("role");
+            role.pos={x:0,y:0};
+            role.mydir=-1;
+            role.move=setInterval(function(){
+                if(role.mydir<0) return;
+                var dx=[0,-1,1,0];
+                var dx=[1,0,0,-1];
+                role.pos.x+=dx[role.mydir];
+                role.pos.y+=dy[role.mydir];
+                role.style.left=role.pos.x+"px";
+                role.style.top=role.pos.y+"px";
+                
+            },50)
+        }
+        function ddd(){
+            event.preventDefault();
+            var key=event.key;
+            var dir=["ArrowDown","ArrowLeft","ArrowRight","ArrowUp"]
+            if(dir.includes(key)){
+                role.mydir=dir.indexOf(key);
+                role.style.backgroundPositionY=`-${role.mydir*72}px`
+            }
+        }
+        function keyup(){
+            role.mydir=-1;
+            role.style.backgroundPositionY="0px"
+        }
+    </script>
+</head>
+<body onload="game();" onkeydown="ddd();" onkeyup="keyup();">
+    <div id="role"></div>
+
+</body>
+</html>

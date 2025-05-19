@@ -1,0 +1,71 @@
+<html>
+<head>
+    <title>5199</title>
+    <meta charset="UTF-8">
+    <style>
+        
+        #universal{
+            width:800px;
+            height: 800px;
+            background-image: url("bg_stars.jpg");
+            animation: bgmove 3s linear infinite;
+        }
+        @keyframes bgmove{
+            0%{background-position-y: 0px;}
+            100%{background-position-y: 216px;}
+        }
+        #ship{
+            width:40px;
+            position:absolute;
+        }
+        .bullet{
+            width: 4px;
+            height: 6px;
+            background: red;
+            position:absolute;
+            left:398px;
+            top:734px
+        }
+    </style>
+    <script>
+        function game(){
+           ship=document.getElementById("ship");
+           ship.pos={x:300,y:740};
+           ship.style.left=role.pos.x+"px";
+           ship.style.top=role.pos.y+"px";
+           ship.moving=0;
+           ship.move=setInterval(function(){
+                if(ship.moving==0)return;
+                if(ship.pos.x==0&&ship.moving<0)return;
+                if(ship.pos.x==760&&ship.moving>0)return;
+                ship.pos.x+=ship.moving;
+                ship.style.left=ship.pos.x+"px"
+           })
+            
+        }
+        function ddd(){
+           event.preventDefault();
+           if(event.key=="ArrowLeft"){
+                ship.moving=-1;
+           }else if(event.key=="ArrowRight"){
+                ship.moving=1;
+           }else if(event.key==" "){
+                shoot();
+           }
+        }
+        function keyup(){
+            ship.moving=0;
+        }
+
+    </script>
+</head>
+<body onload="game();" onkeydown="ddd();" onkeyup="keyup();">
+    <div id="status"></div>
+    <div id="universal">
+        <div id="ship" src="ship.png"></div>
+        <div class="bullet"></div>
+    </div>
+
+
+</body>
+</html>
