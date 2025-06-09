@@ -3,11 +3,27 @@
     <title>gammmmmmmme</title>
     <meta charset="UTF-8">
     <style>
-        #main{
-            width:400px;
-            height: 400px;
-            border-radius: 50% 50%;
+        #back{
+            width:2000px;
+            height: 1000px;
+            background: repeating-linear-gradient(45deg,red 25%,orange 35%,yellow 45%,green 55%,blue 65%,purple 75%);
+            animation: an1 1s infinite linear;
         }
+        @keyframes an1 {
+            0% {background: repeating-linear-gradient(45deg,red 25%,orange 35%,yellow 45%,green 55%,blue 65%,purple 75%);}
+            20% {background: repeating-linear-gradient(45deg,purple 25%,red 35%,orange 45%,yellow 55%,green 65%,blue 75%);}
+            40% {background: repeating-linear-gradient(45deg,blue 25%,purple 35%,red 45%,orange 55%,yellow 65%,green 75%);}
+            60% {background: repeating-linear-gradient(45deg,green 25%,blue 35%,purple 45%,red 55%,orange 65%,yellow 75%);}
+            80% {background: repeating-linear-gradient(45deg,yellow 25%,green 35%,blue 45%,purple 55%,red 65%,orange 75%);}
+            100% {background: repeating-linear-gradient(45deg,orange 25%,yellow 35%,green 45%,blue 55%,purple 65%,red 75%);};
+        }
+        #main{
+            width:750px;
+            height: 750px;
+            border-radius: 50% 50%;
+            font-size: 300px;
+        }
+        
         .ll{
             height:50px;
             width:100px;
@@ -22,6 +38,11 @@
             font-size: 40px;
             color:blue;
         }
+        .no {
+            position: absolute;
+            height: 40px;
+            z-index: 1;
+        }
     </style>
     <script>
         function game(){
@@ -29,7 +50,12 @@
             v=0;
             y=1;
             a=0;
+            o=50;
+            sco=1;
             game_second=0;
+            document.getElementById("ooo").innerHTML=o;
+            document.getElementById("sc").innerHTML=sco;
+            document.getElementById("scoo").innerHTML=sco;
             setInterval(function(){
                 game_second++;
                 x+=a;
@@ -37,15 +63,40 @@
                 document.getElementById("v").innerHTML=x;
             },1000);
         }
+        function newno() {
+            var u=document.createElement("img");
+            u.src="no.png";
+            u.className="no";
+            u.w=60;
+            u.h=60;
+            u.pos={x:1500,y:600};
+            u.style.left=u.pos.x+"px";
+            u.style.top=u.pos.y+"px";
+            u.move=setInterval(function(){
+                u.pos.y+=rand(-1,1);
+                if(u.pos.y > 800-u.w) u.pos.y=800-u.w;
+                else if(u.pos.x < 0) u.pos.x=0;
+                u.pos.y++;
+                u.style.left=u.pos.x+"px";
+                u.style.top=u.pos.y+"px";
+                if(u.pos.y > 800-u.h) die(u);
+            },30);
+            document.getElementById("back").appendChild(u);
+            console.log("ddd");
+        }
         function get(){
-            if(x>=50){
-                y+=1;
+            if(x>=30){
+                y+=sco;
                 x-=30;
             }
         }
+        function die(obj) {
+            clearInterval(obj.move);
+            obj.remove();
+        }
         function plusplus(){
             if(x>=50){
-                a+=1;
+                a+=sco;
                 x-=50;
             }
         }
@@ -54,18 +105,47 @@
             document.getElementById("v").innerHTML=x;
 
         }
+        function win(){
+            
+
+        }
+        function gooo(){
+            if(x>=o){
+                x-=o;
+                sco+=1;
+                o+=50*sco;
+                if(o>1000){
+                    o="win";
+                    win();
+                }
+                document.getElementById("ooo").innerHTML=o;
+                document.getElementById("sc").innerHTML=sco;
+                document.getElementById("scoo").innerHTML=sco;
+                document.getElementById("v").innerHTML=x;
+            }
+
+        }
+        function msMove() {
+            msPos=document.getElementById("mousePos");
+            msPos.innerHTML=`(${event.offsetX},${event.offsetY})`;
+        }
 
     </script>
 </head>
-<body onload="game();" onkeydown="ddd();" onkeyup="keyup();">
-    <button onclick="plus();" id="main">go</button>
-    <div class="lll">score:<span type="text" id="v"class="lll">0</span></div>
-    <div class="lll">time:<span type="text" id="gametime"class="lll">0</span></div>
-    <div id="status">
-        <button onclick="get();" id="m"class="ll">手動+1</button>
-        <button onclick="plusplus();" id="a"class="ll">自動+1</button>
-        <button onclick="goal();" id="i"class="ll">1500</button>
+<body onload="game();" onkeydown="ddd();" onkeyup="keyup();" onload="newno();">
+    <div id="back" onmousemove="msMove();">
+        <div id="mousePos">(x,y)</div>
+
+        <button onclick="plus();" id="main">(:</button>
+        <div class="lll">score:<span type="text" id="v"class="lll">0</span></div>
+        <div class="lll">time:<span type="text" id="gametime"class="lll">0</span></div>
+        <div id="status">
+            <button onclick="get();" id="m"class="ll">手動+<span id="scoo">0</span></button>
+            <button onclick="plusplus();" id="a"class="ll">自動+<span type="text" id="sc">0</span></button>
+            <button onclick="gooo();" id="i"class="ll"><span type="text" id="ooo">0</span></button>
+        </div>
     </div>
+
 
 
 
