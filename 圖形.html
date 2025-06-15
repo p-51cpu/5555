@@ -1,4 +1,4 @@
-<html>
+<!--<html>
 <head>
 
 <style>
@@ -100,6 +100,210 @@
 <div id="sd5"></div>
 <div id="sd7"></div>
 <div id="sd6"></div>
+</body>border-left: 40px solid transparent;
+            border-right: 40px solid transparent;
+            border-bottom: 60px solid #228b22;
+</html>-->
+<!--鑽石 聖誕樹 冰淇淋-->
+
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>10405林宥廷-幾何拼圖</title>
+    <style>
+		.ice {
+            position: relative;
+            width: 100px;
+            height: 200px;
+            margin: 50px auto;
+        }
+		 .trapezoid {
+            width: 120px;
+            height: 100px;
+            background-color: cyan;
+            clip-path: polygon(20% 0%, 80% 0%, 100% 50%, 0% 50%);
+        }
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 20px;
+            justify-items: center;
+            margin-top: 50px;
+        }
+        .tree {
+            position: relative;
+            width: 100px;
+            height: 150px;
+            margin-bottom: 20px;
+        }
+        .tree .leaf {
+             width: 100px;
+            height: 70px;
+			clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+            position: absolute;
+            bottom: -100px;
+            left: 50%;
+            transform: translateX(-50%);
+			background-color: green;
+			margin-bottom: 20px;
+        }
+        .tree .leaf:nth-child(1) {
+             top: 30px;
+            background-color: #00ff00;
+            width: 60%;
+			z-index: 20;
+        }
+        .tree .leaf:nth-child(2) {
+            top: 70px;
+            background-color: #00cc00;
+			
+            width: 110%;
+			z-index: 10;
+        }
+        .tree .leaf:nth-child(3) {
+            top: 100px;
+            z-index: 5;
+            width: 150%;
+            
+        }
+		
+        .tree .trunk {
+            background-color: #8b4513;
+            width: 60px;
+            height: 80px;
+            margin: 0 auto;
+            position: relative;
+            top: 150px;
+			z-index: 0;
+        }
+        .tree .star {
+            position: absolute;
+            top: 10px;
+            left: 30px;
+            width: 40px;
+            height: 40px;
+            background-color: yellow;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+			z-index: 30;
+        }
+        .ice-cream {
+			
+            width: 120px;
+            height: 180px;
+            position: relative;
+            margin-bottom: 20px;
+        }
+        .ice-cream .cone {
+            position: absolute;
+            bottom: 0;
+            width: 100px;
+            height: 100px;
+            background-color: #deb887;
+            clip-path: polygon(50% 100%, 0 0, 100% 0);
+            left: 10px;
+			top:70px
+        }
+        .ice-cream .scoop {
+			position: absolute;
+            width: 100px;
+            height: 50px;
+            background-color: #ff6347;
+            border-top-left-radius: 100px;
+            border-top-right-radius: 100px;
+			right:10px
+			
+        }
+        .ice-cream .scoop:nth-child(2) {
+            bottom: 100px;
+            background-color: #ffb6c1;
+        }
+        .uuu .creative {
+            width: 200px;
+            height: 50px;
+            background-color: green;
+            border-radius: 50%; 
+            margin-bottom: 20px;
+			position: absolute;
+			top:430px;
+			left: 60%;
+			z-index: 10;
+        }
+		.uuu .c {
+			width: 120px;
+            height: 60px;
+            background-color: #006633;
+			border-top-left-radius: 100px;
+            border-top-right-radius: 100px;
+			margin-bottom: 20px;
+			position: absolute;
+			top:380px;
+			left: 65%;
+			z-index: 5;
+			
+		}
+		.uuu .cre {
+			width: 150px;
+            height: 20px;
+            background-color: #00cc00;
+			margin-bottom: 20px;
+			position: absolute;
+			top:400px;
+			left: 55%;
+			z-index: 0;
+		}
+		
+		.inverted-triangle-border {
+            width: 0;
+            height: 0;
+			position: absolute;
+            border-left: 60px solid transparent;
+            border-right: 60px solid transparent;
+            border-top: 100px solid cyan;
+			top:50px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <h1>10405林宥廷-幾何拼圖</h1>
+
+    <div class="container">
+        
+        <!-- 2. 聖誕樹 -->
+        <div class="tree">
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="leaf"></div>
+            <div class="trunk"></div>
+            <div class="star"></div>
+        </div>
+
+        <!-- 3. 冰淇淋 -->
+        <div class="ice-cream">
+            <div class="cone"></div>
+            <div class="scoop"></div>
+            <div class="scoop"></div>
+        </div>
+		<div class="ice">
+			<div class="trapezoid"></div>
+			<div class="inverted-triangle-border"></div>
+		</div>
+
+        <!-- 4. 創意發想 -->
+		<div class="uuu">
+			<div class="c"></div>
+			<div class="cre"></div>
+			<div class="creative"></div>	
+		</div>
+	
+
 </body>
 </html>
-<!--鑽石 聖誕樹 冰淇淋-->
