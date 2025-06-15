@@ -1,63 +1,64 @@
+
 <html>
 <head>
     <title>0421</title>
     <meta charset="UTF-8">
     <style>
-    #ss{
-        display: grid;
-        grid: repeat(3,90px) / repeat(4,90px);
-    }
+        #board {
+            display: grid;
+            grid: repeat(3,90px) / repeat(4,90px);
+        }
     </style>
     <script>
-        function game(){
+        function gameInit() {
             cards=[1,1,2,2,3,3,4,4,5,5,6,6];
-            
-            b=document.getElementById("ss");
-            for(i=0;i<12;i++){
-                a=document.createElement("img");
+            var b=document.getElementById("board");
+            for(i=0;i<cards.length;i++) {
+                var a=document.createElement("img");
+                a.className="card";
                 a.src=`pic/0.png`;
+                a.addEventListener("click",pickImg);
                 b.appendChild(a);
-                a.addEventListener("click",pickImg)
             }
             imgs=Array.from(document.getElementsByClassName("card"));
-            gast=false;
+            gameStarting=false;
         }
-        function start(){
-            
+        function gameStart() {
             cards.sort((a,b)=>(Math.random()-0.5));
-            
-            for(i=0;i<imgs.length;i++){
+            for(i=0;i<imgs.length;i++) {
                 imgs[i].src=`pic/${cards[i]}.png`;
             }
-            setTimeout(function(){imgs.forEach(img=>{img.src="pic/0.png";})},3000);
-            gast=true;
+            setTimeout(function(){
+                imgs.forEach(img=>{img.src="pic/0.png";});
+            },3000);
+            gameStarting=true;
             p1=-1;p2=-1;
         }
-        function pickImg(){
-            if(!gast) return;
+        function pickImg() {
+            if(!gameStarting || p2!=-1) return;
             img=event.target;
             idx=imgs.indexOf(img);
-            if(p1==-1){
+            if(p1==-1) {
                 p1=idx;
-                img.src=`pic/${cards[p1]}.png`
-            }else{
+                img.src=`pic/${cards[p1]}.png`;
+            } else {
                 p2=idx;
-                img.src=`pic/${cards[p2]}.png`
+                img.src=`pic/${cards[p2]}.png`;
+                if(cards[p1]==cards[p2]) {
+                    p1=-1;p2=-1;
+                } else {
+                    setTimeout(function(){
+                        imgs[p1].src="pic/0.png";
+                        imgs[p2].src="pic/0.png";
+                        p1=-1;p2=-1;
+                    },1000);
+                }
             }
-            if(cards[p1]==cards[p2]){
-                p1=-1;p2=-1
-            }else{
-                
-            }
-            
         }
     </script>
 </head>
-<body onload="game();">
-
-    
-    <div id="ss"></div>
-    <button onclick="start">go</button>
-
+<body onload="gameInit();">
+    <div id="board"></div>
+    <button onclick="gameStart();">遊戲開始</button>
 </body>
 </html>
