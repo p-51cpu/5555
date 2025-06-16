@@ -10,12 +10,12 @@
             animation: an1 1s infinite linear;
         }
         @keyframes an1 {
-            0% {background: repeating-linear-gradient(45deg,red 25%,orange 35%,yellow 45%,green 55%,blue 65%,purple 75%);}
-            20% {background: repeating-linear-gradient(45deg,purple 25%,red 35%,orange 45%,yellow 55%,green 65%,blue 75%);}
-            40% {background: repeating-linear-gradient(45deg,blue 25%,purple 35%,red 45%,orange 55%,yellow 65%,green 75%);}
-            60% {background: repeating-linear-gradient(45deg,green 25%,blue 35%,purple 45%,red 55%,orange 65%,yellow 75%);}
-            80% {background: repeating-linear-gradient(45deg,yellow 25%,green 35%,blue 45%,purple 55%,red 65%,orange 75%);}
-            100% {background: repeating-linear-gradient(45deg,orange 25%,yellow 35%,green 45%,blue 55%,purple 65%,red 75%);};
+            0% {background: repeating-linear-gradient(45deg,red 25%,orange 35%,yellow 45%,rgb(11, 218, 11) 55%,cyan 65%,rgb(216, 15, 216)  75%);}
+            20% {background: repeating-linear-gradient(45deg,rgb(216, 15, 216) 25%,red 35%,orange 45%,yellow 55%,rgb(11, 218, 11) 65%,cyan 75%);}
+            40% {background: repeating-linear-gradient(45deg,cyan 25%,rgb(216, 15, 216)  35%,red 45%,orange 55%,yellow 65%,rgb(11, 218, 11) 75%);}
+            60% {background: repeating-linear-gradient(45deg,rgb(11, 218, 11) 25%,cyan 35%,rgb(216, 15, 216)  45%,red 55%,orange 65%,yellow 75%);}
+            80% {background: repeating-linear-gradient(45deg,yellow 25%,rgb(11, 218, 11) 35%,cyan 45%,rgb(216, 15, 216)  55%,red 65%,orange 75%);}
+            100% {background: repeating-linear-gradient(45deg,orange 25%,yellow 35%,rgb(11, 218, 11) 45%,cyan 55%,rgb(216, 15, 216)  65%,red 75%);};
         }
         #main{
             width:750px;
@@ -64,10 +64,6 @@
                 x-=30;
             }
         }
-        function die(obj) {
-            clearInterval(obj.move);
-            obj.remove();
-        }
         function plusplus(){
             if(x>=50){
                 a+=sco;
@@ -79,10 +75,6 @@
             document.getElementById("v").innerHTML=x;
 
         }
-        function win(){
-            
-
-        }
         function gooo(){
             if(x>=o){
                 x-=o;
@@ -90,7 +82,7 @@
                 o+=50*sco;
                 if(o>1000){
                     o="win";
-                    win();
+                    alert("you win!");
                 }
                 document.getElementById("ooo").innerHTML=o;
                 document.getElementById("sc").innerHTML=sco;
