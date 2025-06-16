@@ -16,7 +16,7 @@
             for(i=0;i<cards.length;i++) {
                 var a=document.createElement("img");
                 a.className="card";
-                a.src=`pic/0.png`;
+                a.src=`0.png`;
                 a.addEventListener("click",pickImg);
                 b.appendChild(a);
             }
@@ -26,10 +26,10 @@
         function gameStart() {
             cards.sort((a,b)=>(Math.random()-0.5));
             for(i=0;i<imgs.length;i++) {
-                imgs[i].src=`pic/${cards[i]}.png`;
+                imgs[i].src=`${cards[i]}.png`;
             }
             setTimeout(function(){
-                imgs.forEach(img=>{img.src="pic/0.png";});
+                imgs.forEach(img=>{img.src="0.png";});
             },3000);
             gameStarting=true;
             p1=-1;p2=-1;
@@ -40,16 +40,16 @@
             idx=imgs.indexOf(img);
             if(p1==-1) {
                 p1=idx;
-                img.src=`pic/${cards[p1]}.png`;
+                img.src=`${cards[p1]}.png`;
             } else {
                 p2=idx;
-                img.src=`pic/${cards[p2]}.png`;
+                img.src=`${cards[p2]}.png`;
                 if(cards[p1]==cards[p2]) {
                     p1=-1;p2=-1;
                 } else {
                     setTimeout(function(){
-                        imgs[p1].src="pic/0.png";
-                        imgs[p2].src="pic/0.png";
+                        imgs[p1].src="0.png";
+                        imgs[p2].src="0.png";
                         p1=-1;p2=-1;
                     },1000);
                 }
