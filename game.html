@@ -38,11 +38,6 @@
             font-size: 40px;
             color:blue;
         }
-        .no {
-            position: absolute;
-            height: 40px;
-            z-index: 1;
-        }
     </style>
     <script>
         function game(){
@@ -62,27 +57,6 @@
                 document.getElementById("gametime").innerHTML=game_second;
                 document.getElementById("v").innerHTML=x;
             },1000);
-        }
-        function newno() {
-            var u=document.createElement("img");
-            u.src="no.png";
-            u.className="no";
-            u.w=60;
-            u.h=60;
-            u.pos={x:1500,y:600};
-            u.style.left=u.pos.x+"px";
-            u.style.top=u.pos.y+"px";
-            u.move=setInterval(function(){
-                u.pos.y+=rand(-1,1);
-                if(u.pos.y > 800-u.w) u.pos.y=800-u.w;
-                else if(u.pos.x < 0) u.pos.x=0;
-                u.pos.y++;
-                u.style.left=u.pos.x+"px";
-                u.style.top=u.pos.y+"px";
-                if(u.pos.y > 800-u.h) die(u);
-            },30);
-            document.getElementById("back").appendChild(u);
-            console.log("ddd");
         }
         function get(){
             if(x>=30){
@@ -134,6 +108,7 @@
 </head>
 <body onload="game();" onkeydown="ddd();" onkeyup="keyup();" onload="newno();">
     <div id="back" onmousemove="msMove();">
+        <div id="win"></div>
         <div id="mousePos">(x,y)</div>
 
         <button onclick="plus();" id="main">(:</button>
