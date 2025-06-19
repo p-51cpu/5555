@@ -11,7 +11,7 @@
             width: 800px;
             height: 800px;
             position: relative;
-            background-image: url("pic/bg_stars.jpg");
+            background-image: url("bg_stars.jpg");
             animation: bgmove 3s linear infinite;
         }
         @keyframes bgmove {
@@ -116,7 +116,7 @@
         }
         function newUFO() {
             var u=document.createElement("img");
-            u.src="pic/ufo.png";
+            u.src="ufo.png";
             u.className="ufo";
             u.w=60;
             u.h=40;
@@ -139,7 +139,7 @@
 <body onload="gameInit();" onkeydown="mykeydown();" onkeyup="mykeyup();">
     <div id="status">Time：<span id="gametime">0</span>秒　　Score：<span id="gamescore">0</span>分</div>
     <div id="universal">
-        <img id="ship" src="pic/ship.png">
+        <img id="ship" src="ship.png">
     </div>
 </body>
 </html>
